@@ -10,5 +10,7 @@ export default function NoProjectSelected({ onStartAddProject }){
                 <Button onClick={onStartAddProject}>Create new project</Button>
             </p>
         </div>
+
+        
     )
 }
