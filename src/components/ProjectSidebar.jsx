@@ -6,27 +6,31 @@ export default function ProjectSidebar({
   selectedProjectId,
 }) {
   return (
-    <aside className="w-1/3 px-8 py-16 bg-gradient-to-r from-stone-900 to-gray-700 text-gray-50 md:w-72 rounded-r-xl">
-      <h2 className="mb-8 font-bold uppercase md:text-xl text-gray-200">
+    <aside className="w-1/3 px-8 py-16 shadow-x1 bg-gradient-to-r from-violet-900 to-gray-700 text-gray-50 md:w-72 rounded-r-xl">
+      <h2 className="mb-8 font-bold uppercase text-2xl text-gray-200">
         CollabSphere
       </h2>
-      <div>
+      <div m>
         <Button onClick={onStartAddProject}>+ Add Project</Button>
+        <p className="font-bold py-4 px-2">Owned Workspace</p>
       </div>
       <ul className="mt-8">
         {projects.map((project) => {
           let cssClasses =
-            "w-full text-left px-2 py-1 rounded-sm my-1 hover:text-gray-200 hover:bg-gray-800";
+            "w-full text-left px-2 py-1 rounded-sm my-1 hover:text-gray-200 hover:bg-gray-800 rounded-xl";
 
           if (project.id === selectedProjectId) {
-            cssClasses += " bg-gray-800 text-gray-200";
+            cssClasses += " bg-gray-800 text-stone-100 rounded-xl";
           } else {
             cssClasses += " text-gray-400";
           }
 
           return (
             <li key={project.id}>
-              <button className={cssClasses} onClick={() => onSelectProject(project.id)}>
+              <button
+                className={cssClasses}
+                onClick={() => onSelectProject(project.id)}
+              >
                 {project.title}
               </button>
             </li>
