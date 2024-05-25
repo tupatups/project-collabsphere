@@ -1,7 +1,7 @@
 import { useRef } from "react";
 import Input from "./Input";
 import Modal from "./Modal";
-export default function NewProject({ onAdd }) {
+export default function NewProject({ onAdd, onCancel }) {
   const modal = useRef();
   const title = useRef();
   const description = useRef();
@@ -11,9 +11,7 @@ export default function NewProject({ onAdd }) {
     const enteredTitle = title.current.value;
     const enteredDescription = description.current.value;
     const enteredDueDate = dueDate.current.value;
-
-    // validation
-
+    
     if (
       enteredTitle.trim() === "" ||
       enteredDescription.trim() === "" ||
@@ -44,7 +42,7 @@ export default function NewProject({ onAdd }) {
       <div className="w-[35rem]">
         <menu className="flex items-center justify-end gap-4 my-4">
           <li>
-            <button className="text-gray-800 hover:text-gray-950">
+            <button className="text-gray-800 hover:text-gray-950" onClick={onCancel}>
               Cancel
             </button>
           </li>
