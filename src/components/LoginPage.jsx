@@ -15,7 +15,7 @@ export default function LoginPage({ onLogin }) {
           CollabSphere
         </h1>
         <p className="text-center text-gray-700 text-xl mb-8 ml-[47rem]">
-          Navigate the workflow seas with ease!
+          Navigate the workflow seas with ease!.
         </p>
       <form
         onSubmit={handleLogin}>
