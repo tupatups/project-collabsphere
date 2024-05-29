@@ -2,28 +2,40 @@ import React, { useContext } from "react";
 import { LoginContext } from "./LoginContext";
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
+import { auth } from "../firebase";
+import {
+ createUserWithEmailAndPassword
+}from "firebase/auth"
 
+ 
 export default function SignUpPage({ onLogin, email, password }) {
+  
   const navigate = useNavigate();
 
   const { setIsLoggedIn } = useContext(LoginContext);
 
+
   const handleLogin = (event) => {
     event.preventDefault();
 
-    const email = ""
-    const password =""
-
+    const [email, setEmail] = useState('')
+    const [password, setPassword] = useState('');
+ 
     createUserWithEmailAndPassword(auth, email, password)
-        .them((cred) =>{
-            window.alert(`user created ${cred.user}`)
-           
+        .then((userCredential) => {
+            // Signed in
+            const user = userCredential.user;
+            console.log(user);
+            navigate("/login")
+            // ...
         })
-        .catch((err) => {
-            window.alert(`ALERT ${err.user}`)
-        })
-
-    onLogin(true);
+        .catch((error) => {
+            const errorCode = error.code;
+            const errorMessage = error.message;
+            console.log(errorCode, errorMessage);
+            // ..
+        });
+      
   };
 
   function handleNavigate() {
@@ -31,11 +43,11 @@ export default function SignUpPage({ onLogin, email, password }) {
   }
 
   function handleEmailChange(event){
-    email = event.target.value;
+    setEmail(event.target.value)
   }
 
   function handlePasswordChange(event){
-    password = event.target.value
+    setPassword(event.target.value)
   }
 
   return (

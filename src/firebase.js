@@ -5,9 +5,7 @@ import { initializeApp } from "firebase/app";
 import { 
     getFirestore 
 } from "firebase/firestore"
-import {
-    getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword
-}from "firebase/auth"
+import { getAuth } from "firebase/auth";
 
 
 const firebaseConfig = {
@@ -22,9 +20,13 @@ const firebaseConfig = {
 
 // initialize firebase
 
-initializeApp(firebaseConfig);
+const app = initializeApp(firebaseConfig);
 
-const auth = getAuth();
+export const auth = getAuth(app)
+export default app;
+
+
+
 
 // const signInForm = document.querySelector(".signIn")
 // signInForm.addEventListener('submit', (e) => {
@@ -44,20 +46,20 @@ const auth = getAuth();
 //         })
 // })
 
-const loginForm = document.querySelector('.login')
-loginForm.addEventListener('submit', (e) => {
-   e.preventDefault()
+// const loginForm = document.querySelector('.login')
+// loginForm.addEventListener('submit', (e) => {
+//    e.preventDefault()
 
    
 
-   signInWithEmailAndPassword(auth, SignUpPage.email, password)
-    .then((cred) => {
-        window.alert(`User created: ${cred.user}`)
+//    signInWithEmailAndPassword(auth, SignUpPage.email, password)
+//     .then((cred) => {
+//         window.alert(`User created: ${cred.user}`)
 
         
-    })
-    .catch((err) =>{
-        window.alert(`ALERT: ${err.message}`)
-    })
+//     })
+//     .catch((err) =>{
+//         window.alert(`ALERT: ${err.message}`)
+//     })
     
-})
+// })
