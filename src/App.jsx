@@ -1,11 +1,14 @@
-import { useState } from 'react';
+import { useState } from "react";
+import { RouterProvider, createBrowserRouter } from "react-router-dom";
 
-import NewProject from './components/NewProject.jsx';
-import NoProjectSelected from './components/NoProjectSelected.jsx';
-import ProjectsSidebar from './components/ProjectSidebar.jsx';
-import SelectedProject from './components/SelectedProject.jsx';
+import NewProject from "./components/NewProject.jsx";
+import NoProjectSelected from "./components/NoProjectSelected.jsx";
+import ProjectsSidebar from "./components/ProjectSidebar.jsx";
+import SelectedProject from "./components/SelectedProject.jsx";
+import LoginPage from "./components/LoginPage.jsx";
+import RootLayout from "./components/RootLayout.jsx";
 
-function App() {
+export default function App() {
   const [projectsState, setProjectsState] = useState({
     selectedProjectId: undefined,
     projects: [],
@@ -17,7 +20,7 @@ function App() {
       const taskId = Math.random();
       const newTask = {
         text: text,
-          projectId: prevState.selectedProjectId,
+        projectId: prevState.selectedProjectId,
         id: taskId,
       };
 
@@ -114,17 +117,30 @@ function App() {
     content = <NoProjectSelected onStartAddProject={handleStartAddProject} />;
   }
 
+  const router = createBrowserRouter([
+    {
+      path: "/",
+      element: <LoginPage />,
+    },
+    {
+      path: "/dashboard",
+      element: (
+        <main className="h-screen my-8 flex gap-8">
+          <ProjectsSidebar
+            onStartAddProject={handleStartAddProject}
+            projects={projectsState.projects}
+            onSelectProject={handleSelectProject}
+            selectedProjectId={projectsState.selectedProjectId}
+          />
+          {content}
+        </main>
+      ),
+    },
+  ]);
+
   return (
-    <main className="h-screen my-8 flex gap-8">
-      <ProjectsSidebar
-        onStartAddProject={handleStartAddProject}
-        projects={projectsState.projects}
-        onSelectProject={handleSelectProject}
-        selectedProjectId={projectsState.selectedProjectId}
-      />
-      {content}
-    </main>
+    <>
+      <RouterProvider router={router} />
+    </>
   );
 }
-
-export default App;
