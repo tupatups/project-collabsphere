@@ -6,13 +6,13 @@ export default function ProjectSidebar({
   selectedProjectId,
 }) {
   return (
-    <aside className="w-1/3 px-8 py-16 shadow-x1 bg-gradient-to-r from-violet-900 to-gray-700 text-gray-50 md:w-72 rounded-r-xl">
-      <h2 className="mb-8 font-bold uppercase text-2xl text-gray-200">
+    <aside className="w-1/3 px-8 py-16 shadow-x1 bg-gray-700 text-gray-50 md:w-72 rounded-r-xl">
+      <h2 className="mb-8 font-bold text-4xl text-gray-200">
         CollabSphere
       </h2>
-      <div m>
+      <div>
         <Button onClick={onStartAddProject}>+ Add Project</Button>
-        <p className="font-bold py-4 px-2">Owned Workspace</p>
+        <p className="text-xl mt-6 py-4 px-2">My Workspaces</p>
       </div>
       <ul className="mt-8">
         {projects.map((project) => {
@@ -21,9 +21,7 @@ export default function ProjectSidebar({
 
           if (project.id === selectedProjectId) {
             cssClasses += " bg-gray-800 text-stone-100 rounded-xl";
-          } else {
-            cssClasses += " text-gray-400";
-          }
+          } 
 
           return (
             <li key={project.id}>

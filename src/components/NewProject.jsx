@@ -1,21 +1,26 @@
 import { useRef } from "react";
 import Input from "./Input";
 import Modal from "./Modal";
+
 export default function NewProject({ onAdd, onCancel }) {
+
   const modal = useRef();
   const title = useRef();
   const description = useRef();
   const dueDate = useRef();
+  const startDate = useRef();
 
   function handleSave() {
     const enteredTitle = title.current.value;
     const enteredDescription = description.current.value;
     const enteredDueDate = dueDate.current.value;
+    const enteredStartDate = startDate.current.value;
     
     if (
       enteredTitle.trim() === "" ||
       enteredDescription.trim() === "" ||
-      enteredDueDate.trim() === ""
+      enteredDueDate.trim() === "" || 
+      enteredStartDate.trim() === ""
     ) {
       modal.current.open();
       return;
@@ -24,6 +29,7 @@ export default function NewProject({ onAdd, onCancel }) {
     onAdd({
       title: enteredTitle,
       description: enteredDescription,
+      startDate: enteredStartDate,
       dueDate: enteredDueDate,
     });
   }
@@ -58,6 +64,7 @@ export default function NewProject({ onAdd, onCancel }) {
         <div>
           <Input ref={title} label="Title" />
           <Input ref={description} label="Description" textarea />
+          <Input type="date" ref={startDate} label="Start Date" />
           <Input type="date" ref={dueDate} label="Due Date" />
         </div>
       </div>

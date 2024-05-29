@@ -6,12 +6,21 @@ export default function SelectedProject({
   onAddTask,
   onDeleteTask,
   tasks,
-}) {
-  const formattedDate = new Date(project.dueDate).toLocaleDateString("en-US", {
+}) 
+{
+  const formattedDueDate = new Date(project.dueDate).toLocaleDateString("en-US", {
     year: "numeric",
     month: "short",
     day: "numeric",
-  });
+  },
+);
+
+const formattedStartDate = new Date(project.dueDate).toLocaleDateString("en-US", {
+  year: "numeric",
+  month: "short",
+  day: "numeric",
+},
+);
 
   return (
 
@@ -29,7 +38,7 @@ export default function SelectedProject({
             Delete
           </button>
         </div>
-        <p className="mb-4 text-stone-400">{formattedDate}</p>
+        <p className="mb-4 text-stone-400">{formattedStartDate} - {formattedDueDate}</p>
         <p className="text-stone-600 whitespace-pre-wrap">
           {project.description}
         </p>
@@ -56,7 +65,7 @@ export default function SelectedProject({
             Delete
           </button>
         </div>
-        <p className="mb-4 text-stone-400">{formattedDate}</p>
+        <p className="mb-4 text-stone-400">{formattedDueDate}</p>
         <p className="text-stone-600 whitespace-pre-wrap">
           {project.description}
         </p>

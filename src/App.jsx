@@ -6,6 +6,7 @@ import NoProjectSelected from "./components/NoProjectSelected.jsx";
 import ProjectsSidebar from "./components/ProjectSidebar.jsx";
 import SelectedProject from "./components/SelectedProject.jsx";
 import LoginPage from "./components/LoginPage.jsx";
+import SignUpPage from "./components/SignUpPage.jsx";
 import RootLayout from "./components/RootLayout.jsx";
 
 export default function App() {
@@ -136,6 +137,10 @@ export default function App() {
         </main>
       ),
     },
+    {
+      path: '/signup',
+      element: <SignUpPage />
+    }
   ]);
 
   return (

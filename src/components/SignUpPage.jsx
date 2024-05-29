@@ -1,9 +1,9 @@
 import React, { useContext } from "react";
 import { LoginContext } from "./LoginContext";
 import { useNavigate } from "react-router-dom";
-import { Link } from 'react-router-dom';
+import { Link } from "react-router-dom";
 
-export default function LoginPage({ onLogin }) {
+export default function SignUpPage({ onLogin }) {
   const navigate = useNavigate();
 
   const { setIsLoggedIn } = useContext(LoginContext);
@@ -29,11 +29,11 @@ export default function LoginPage({ onLogin }) {
           <div class="w-full bg-white rounded-lg shadow border md:mt-0 sm:max-w-md xl:p-0">
             <div class="p-6 space-y-4 md:space-y-6 sm:p-8">
               <p class="text-xl text-align-center font-bold leading-tight tracking-tight text-gray-900 md:text-2xl">
-                Login
+                Create an account
               </p>
               <div>
                 <label class="block mb-2 text-sm font-medium text-gray-900">
-                  Your username
+                  Enter your username
                 </label>
                 <input
                   placeholder="Username"
@@ -44,7 +44,7 @@ export default function LoginPage({ onLogin }) {
               </div>
               <div>
                 <label class="block mb-2 text-sm font-medium text-gray-900">
-                  Password
+                  Set password
                 </label>
                 <input
                   class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg block w-full p-2.5"
@@ -58,10 +58,12 @@ export default function LoginPage({ onLogin }) {
                 type="submit"
                 onClick={handleNavigate}
               >
-                Login
+                Create account
               </button>
 
-              <p>Don't have an account? <Link to='/signup'>Sign up</Link></p>
+              <p>
+                Already have an account? <Link to="/">Sign in</Link>
+              </p>
             </div>
           </div>
         </div>
