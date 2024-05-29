@@ -27,7 +27,6 @@ const [password, setPassword] = useState('')
       // Signed in
       const user = userCredential.user;
       console.log(user);
-      navigate("/login")
       navigate("/dashboard");
     })
     .catch((error) =>{
@@ -37,11 +36,11 @@ const [password, setPassword] = useState('')
     })
 
 
-    onLogin(true);
+    
   };
 
   function handleEmailChange (event){
-    setEmail(event.target.email)
+    setEmail(event.target.value)
   }
   function handlePasswordChange(event){
     setPassword(event.target.value)
