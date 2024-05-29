@@ -19,7 +19,7 @@ export default function SignUpPage({ onLogin }) {
     event.preventDefault();
 
     createUserWithEmailAndPassword(auth, email, password)
-    .then((userCrential) => {
+    .then((userCredential) => {
       const user = userCredential.user;
       console.log(user);
       navigate("/dashboard");
@@ -30,7 +30,7 @@ export default function SignUpPage({ onLogin }) {
       console.log(errorCode, errorMessage);
     })
 
-    onLogin(true);
+  
   };
 
   function handleEmailChange (event){
