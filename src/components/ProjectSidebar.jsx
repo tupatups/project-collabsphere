@@ -35,7 +35,7 @@ export default function ProjectSidebar({
           );
         })}
       </ul>
-      <div class="rounded-lg bg-gradient-to-tr from-gray-300 to-gray-500 shadow-lg shadow-[#a4a4a4,#ffffff]"></div>
+      <div className="rounded-lg bg-gradient-to-tr from-gray-300 to-gray-500 shadow-lg shadow-[#a4a4a4,#ffffff]"></div>
     </aside>
   );
 }
