@@ -14,8 +14,8 @@ export default function LoginPage({ onLogin }) {
 
   const { setIsLoggedIn } = useContext(LoginContext);
 
-const [email, setEmail] = useState('')
-const [password, setPassword] = useState('')
+  const [email, setEmail] = useState('')
+  const [password, setPassword] = useState('')
 
   const handleLogin = (event) => {
     event.preventDefault();
