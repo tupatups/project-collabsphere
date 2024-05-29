@@ -8,7 +8,7 @@ import {
 }from "firebase/auth"
 
  
-export default function SignUpPage({ onLogin, email, password }) {
+export default function SignUpPage() {
   
   const navigate = useNavigate();
 

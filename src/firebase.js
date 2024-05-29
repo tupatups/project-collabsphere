@@ -1,6 +1,3 @@
-import SignUpPage from "./components/SignUpPage";
-import { email, password } from "./components/SignUpPage"  
-
 import { initializeApp } from "firebase/app";
 import { 
     getFirestore 
