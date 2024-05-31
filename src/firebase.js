@@ -11,5 +11,3 @@ const firebaseConfig = {
 }   
 
 export default initializeApp(firebaseConfig);
-
-console.log("testing")

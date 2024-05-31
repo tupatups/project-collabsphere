@@ -1,7 +1,26 @@
 import { useRef } from "react";
 import Input from "./Input";
 import Modal from "./Modal";
+import app from '../firebase';
+import { getAuth } from 'firebase/auth'
+import {  getFirestore, addDoc, doc, collection, Timestamp  } from "firebase/firestore";
 
+
+const auth = getAuth(app);
+const db = getFirestore();
+
+
+const addProject = async (project) => {
+  const user = auth.currentUser;
+  if(user){
+    const projectColRef = collection(db, "users", user.uid, "projects")
+    const projectRef = await addDoc(projectColRef, project);
+    return projectRef.id;
+  }
+  else {
+    console.log("No authenticated user");
+  }
+}
 export default function NewProject({ onAdd, onCancel }) {
 
   const modal = useRef();
@@ -9,6 +28,10 @@ export default function NewProject({ onAdd, onCancel }) {
   const description = useRef();
   const dueDate = useRef();
   const startDate = useRef();
+
+
+
+
 
   function handleSave() {
     const enteredTitle = title.current.value;
@@ -26,13 +49,25 @@ export default function NewProject({ onAdd, onCancel }) {
       return;
     }
 
-    onAdd({
+    const projectData = {
       title: enteredTitle,
       description: enteredDescription,
-      startDate: enteredStartDate,
-      dueDate: enteredDueDate,
-    });
+      startDate: Timestamp.fromDate(new Date(enteredStartDate)),
+      dueDate: Timestamp.fromDate(new Date(enteredDueDate)),
+      createdAt: Timestamp.now(),
+    }
+
+   addProject(projectData)
+    .then((projectId) => {
+      console.log(`Project id: ${projectId}`);
+    })
+    .catch((error) =>{
+      console.log(`Error: ${error}`);
+    })
   }
+
+  
+
 
   return (
     <>
