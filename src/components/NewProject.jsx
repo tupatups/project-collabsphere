@@ -60,6 +60,7 @@ export default function NewProject({ onAdd, onCancel }) {
    addProject(projectData)
     .then((projectId) => {
       console.log(`Project id: ${projectId}`);
+      onAdd(projectData)
     })
     .catch((error) =>{
       console.log(`Error: ${error}`);
