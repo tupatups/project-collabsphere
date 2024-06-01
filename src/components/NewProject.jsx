@@ -67,10 +67,7 @@ export default function NewProject({ onAdd, onCancel }) {
     })
   }
 
-  console.log("testing")
-  console.log("testing")
-  console.log("testing")
-  console.log("testing")
+ 
 
 
   return (
